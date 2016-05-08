@@ -1,0 +1,35 @@
+{
+  "name": "parse-team",
+  "runtime": "nodejs4.3",
+  "description": "Fetch and normalize team data. Runs every day at 12am (UTC)",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 10,
+  "memorySize": 128,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name": "TeamFetchSchedule",
+      "type": "schedule",
+      "config": {
+        "schedule": "cron(0 0 * * ? *)"
+      }
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}",
+    "MLB_TEAMS": "${mlbTeams}",
+    "NBA_TEAMS": "${nbaTeams}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}
