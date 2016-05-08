@@ -1,3 +1,5 @@
+'use strict';
+
 const GraphQLObjectType = require('graphql').GraphQLObjectType;
 
 module.exports = (source, args, context, info) => {

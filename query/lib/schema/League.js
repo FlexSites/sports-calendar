@@ -1,3 +1,5 @@
+'use strict';
+
 const Team = require('../services/Team');
 const SPORTS = require('../constants').SPORTS;
 const defaultResolve = require('../defaultResolve');

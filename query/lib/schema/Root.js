@@ -1,3 +1,5 @@
+'use strict';
+
 const Team = require('../services/Team');
 const constants = require('../constants');
 

@@ -1,3 +1,5 @@
+'use strict';
+
 const Team = require('../services/Team');
 const { SPORTS, LEAGUES } = require('../constants');
 

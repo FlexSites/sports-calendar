@@ -1,3 +1,5 @@
+'use strict';
+
 const SEASONS = ['spring', 'summer', 'fall', 'winter'];
 
 const SPORTS = {

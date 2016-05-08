@@ -1,7 +1,7 @@
 {
   "name": "query",
   "runtime": "nodejs4.3",
-  "description": "Serverless Lambda function for project: sportsfountain",
+  "description": "GraphQL lambda for SportsFountain",
   "customName": false,
   "customRole": false,
   "handler": "handler.handler",
@@ -13,8 +13,8 @@
   },
   "endpoints": [
     {
-      "path": "query",
-      "method": "GET",
+      "path": "graph",
+      "method": "POST",
       "type": "AWS",
       "authorizationType": "none",
       "authorizerFunction": false,
