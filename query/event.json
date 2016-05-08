@@ -1,1 +1,3 @@
-{}
+{
+  "query": "{ leagues { id, teams { state city name: full_name } } }"
+}

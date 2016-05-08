@@ -1,7 +1,11 @@
 'use strict';
 
-module.exports.handler = function(event, context) {
-  return context.done(null, {
-    message: 'Go Serverless! Your Lambda function executed successfully!'
-  });
+const execute = require('./lib/execute');
+
+module.exports.handler = function(event, context, cb) {
+  return execute(event.query, event.variables)
+    .tap(stuff => {
+      console.log(stuff);
+    })
+    .asCallback(cb);
 };

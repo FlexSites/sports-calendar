@@ -1,0 +1,17 @@
+{
+  "name": "sportsfountain-query",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Seth Tippetts <sethtippetts@gmail.com> (http://sethtippetts.com)",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.3.9",
+    "bluebird": "^3.3.5",
+    "graphql": "^0.5.0",
+    "graphql-tools": "^0.3.13"
+  }
+}
