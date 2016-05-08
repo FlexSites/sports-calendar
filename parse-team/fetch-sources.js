@@ -20,19 +20,19 @@ function xmlStats(league) {
     json: true,
   })
   .then(body => body
-    .map(({ team_id, abbreviation, first_name, last_name, conference, division, site_name, city, state, full_name }) => {
+    .map(res => {
       return {
         id: uuid.v4(),
-        slug: team_id,
-        abbreviation,
-        prefix: first_name,
-        name: last_name,
-        conference,
-        division,
-        arena: site_name,
-        city,
-        state,
-        league,
+        slug: res.team_id,
+        prefix: res.first_name,
+        name: res.last_name,
+        arena: res.site_name,
+        abbreviation: res.abbreviation,
+        conference: res.conference,
+        division: res.division,
+        city: res.city,
+        state: res.state,
+        league: res.league,
       };
     })
   );

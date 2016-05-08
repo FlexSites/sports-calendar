@@ -4,9 +4,9 @@ const Bluebird = require('bluebird');
 
 const DIFF_FIELD = 'name';
 
-module.exports = (...promises) => {
-  return Bluebird.all(promises)
-    .then((results) => diff(...results));
+module.exports = (src, dest) => {
+  return Bluebird.all([src, dest])
+    .then((results) => diff(results[0], results[1]));
 };
 
 function diff(src, dest) {
@@ -38,15 +38,16 @@ function diff(src, dest) {
 };
 
 
-function createIndex(arr, field = DIFF_FIELD) {
+function createIndex(arr, field) {
   return arr
     .reduce((prev, curr) => {
-      prev[curr[field]] = curr;
+      prev[curr[field || DIFF_FIELD]] = curr;
       return prev;
     }, {})
 }
 
-function createHash({ arena, city, state, prefix, division, conference } = {}) {
+function createHash(obj) {
+  obj = obj || {};
   // Checking object equality by creating a string hash
-  return `${arena}${city}${state}${prefix}${division}${conference}`;
+  return `${obj.arena}${obj.city}${obj.state}${obj.prefix}${obj.division}${obj.conference}`;
 }

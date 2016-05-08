@@ -14,15 +14,15 @@ const dynamo = new AWS.DynamoDB.DocumentClient({
   region: 'us-west-2',
 });
 
-function batchWrite(updates = [], deletions = []) {
-
-  let updateRequests = updates.map(Item => {
+function batchWrite(changes) {
+  console.log('batch write', changes);
+  let updateRequests = changes.additions.map(Item => {
     console.log(`Updating ${Item.name}`);
     return { PutRequest: { Item } };
   });
-  let deleteRequests = deletions.map(({ id, name }) => {
-    console.log(`Deleting ${name} with ID ${id}`);
-    return { DeleteRequest: { Key: { id } } };
+  let deleteRequests = changes.deletions.map(obj => {
+    console.log(`Deleting ${obj.name} with ID ${obj.id}`);
+    return { DeleteRequest: { Key: { id: obj.id } } };
   });
 
   let requests = updateRequests.concat(deleteRequests);
@@ -47,14 +47,14 @@ function findByLeague(league) {
       },
     })
     .promise()
-    .then(({ Items }) => Items);
+    .then(res => res.Items);
 }
 
 function list() {
   return dynamo
     .scan()
     .promise()
-    .then(({ Items }) => Items);
+    .then(res => res.Items);
 }
 
 
